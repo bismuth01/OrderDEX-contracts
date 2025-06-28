@@ -1,0 +1,82 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "ownerId",
+						"type": "string"
+					}
+				],
+				"name": "depositTo",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "ownerId",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdrawTo",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/UserInteraction.sol": "IWalletControllerDeposit"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/UserInteraction.sol": {
+			"keccak256": "0x0910b0c599896ed60fe4415b0b49675e78fbb79405414a1adddf3c378779066d",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://ac945333282aff24146e651612da19e5da2b35df5c7a45100b55a7c065fc872b",
+				"dweb:/ipfs/QmVrDeuQrNXvc7jC8gogxjhvmRywRubb4hVw54r5cFq4Co"
+			]
+		}
+	},
+	"version": 1
+}
