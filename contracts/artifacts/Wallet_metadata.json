@@ -129,10 +129,6 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
-			},
-			{
-				"stateMutability": "payable",
-				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -163,11 +159,11 @@
 	},
 	"sources": {
 		"contracts/Wallet.sol": {
-			"keccak256": "0x39815560ccc7395646d23ebd130b79464ee84d541cc916bb741165b990174b61",
+			"keccak256": "0x0b45ef819eec32fd491f3833a4987f32461c49d536ff273aa3d5f8c9258cbccb",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://682c8849c71e7cc049708344d0c37417e397946356bcd3791582eebd687a359f",
-				"dweb:/ipfs/QmbCzTKC9rWa4ttgrEpVhJVeBTinqQXX3XwLgRrLMUAc72"
+				"bzz-raw://e148c0d042a2565be2ef3ffac27abaa4999a4dab30c231f83719fa72c4014222",
+				"dweb:/ipfs/QmbLikVYtCzEVC1FHTyoo1u6dxXUWdMWsm8rWvLXEoGwQv"
 			]
 		}
 	},

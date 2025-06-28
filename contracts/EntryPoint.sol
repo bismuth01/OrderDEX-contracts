@@ -6,6 +6,8 @@ import {OwnerIsCreator} from "@chainlink/contracts@1.4.0/src/v0.8/shared/access/
 import {Client} from "@chainlink/contracts-ccip@1.6.0/contracts/libraries/Client.sol";
 
 contract EntryPoint {
+    error NotEnoughBalance(uint256 currentBalance, uint256 calculatedFees);
+
     struct ChainRoute { uint64 chainSelector; address walletController; uint256 denom; }
     struct MatchedOrder {
         string baseToken; string quoteToken;
@@ -22,7 +24,7 @@ contract EntryPoint {
     string public profitWalletId;
     address public owner;
     uint256 public batchCounter;
-    address routerAddress;
+    address public routerAddress;
 
     event TokenRouteSet(string indexed token, ChainRoute route);
     event ProfitWalletIdSet(string walletId);
@@ -80,7 +82,7 @@ contract EntryPoint {
                 tokenAmounts: new Client.EVMTokenAmount[](0),
                 extraArgs: Client._argsToBytes(
                     Client.GenericExtraArgsV2({
-                        gasLimit: 200_000,
+                        gasLimit: 1000000,
                         allowOutOfOrderExecution: false
                     })
                 ),
@@ -96,13 +98,16 @@ contract EntryPoint {
 
         uint256 fees = router.getFee(tokenRoute.chainSelector, ccipmsg);
 
+         if (fees > address(this).balance)
+            revert NotEnoughBalance(address(this).balance, fees);
+
         router.ccipSend{value: fees}(
             tokenRoute.chainSelector,
             ccipmsg
         );
     }
 
-    function ccipProfitWithdraw(ChainRoute memory tokenRoute, string calldata sourceOwnerId, string storage destinationOwnerId, uint256 amount) internal {
+    function ccipProfitWithdraw(ChainRoute memory tokenRoute, string calldata sourceOwnerId, string memory destinationOwnerId, uint256 amount) internal {
         TradeDetails memory trade = TradeDetails(sourceOwnerId, destinationOwnerId, amount);
         Client.EVM2AnyMessage memory ccipmsg = _buildCCIPMessage(tokenRoute.walletController, trade, address(0));
 
@@ -114,5 +119,8 @@ contract EntryPoint {
             tokenRoute.chainSelector,
             ccipmsg
         );
+    }
+
+    receive() external payable { 
     }
 }

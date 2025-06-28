@@ -30,6 +30,25 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "ownerId",
+						"type": "string"
+					}
+				],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "contractBalance",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "owner",
 				"outputs": [
@@ -74,6 +93,11 @@
 						"internalType": "string",
 						"name": "ownerId",
 						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "withdrawAddress",
+						"type": "address"
 					},
 					{
 						"internalType": "uint256",
@@ -147,27 +171,27 @@
 			]
 		},
 		"contracts/UserInteraction.sol": {
-			"keccak256": "0x54cce71319cfdfcf78141c7cdc0c39e95201f0cd6311868ccfadd2aa632a45a4",
+			"keccak256": "0x1c0686ccd287d9f1759fdd4ca2ff767f6b5682f537d9c99a847e17aa667c6fcf",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://89fbfcecfa8142a1cbd41195066dba199043c2a24ebed9fe5691b49aaa5a8b3a",
-				"dweb:/ipfs/QmZurxkCnpZnYsVu5CxKF6C9zDH3RUfjYGZc2HGsVZ5uJU"
+				"bzz-raw://6960b0cd47ccf4e9628367d1c5b0376807ab9e6cac03a17808a12fd249e697d4",
+				"dweb:/ipfs/QmaWJzPQKWdKPm2QRrEFzeD5pKsxecX1y26MwdHoKEpZYc"
 			]
 		},
 		"contracts/Wallet.sol": {
-			"keccak256": "0x39815560ccc7395646d23ebd130b79464ee84d541cc916bb741165b990174b61",
+			"keccak256": "0x0b45ef819eec32fd491f3833a4987f32461c49d536ff273aa3d5f8c9258cbccb",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://682c8849c71e7cc049708344d0c37417e397946356bcd3791582eebd687a359f",
-				"dweb:/ipfs/QmbCzTKC9rWa4ttgrEpVhJVeBTinqQXX3XwLgRrLMUAc72"
+				"bzz-raw://e148c0d042a2565be2ef3ffac27abaa4999a4dab30c231f83719fa72c4014222",
+				"dweb:/ipfs/QmbLikVYtCzEVC1FHTyoo1u6dxXUWdMWsm8rWvLXEoGwQv"
 			]
 		},
 		"contracts/WalletController.sol": {
-			"keccak256": "0xef054c746d2d64defbb2342895ee149e6957cc05e39769830310ddc3ef38c3e1",
+			"keccak256": "0x7a5ff39f36ca5e242db2c11c5867c0c3f88d732abfc45c3876e1b009984a6868",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://f31a643a8aefc4ac986685936c86247db54aeb94eccad4e05ab13ba2a7061f0e",
-				"dweb:/ipfs/QmYyG3xyHwAs7qjqCRKzktp8zkTVtf2TudL2CtRfTTdP3k"
+				"bzz-raw://1e423af2c8d60b3e8faf9022a03bb1c0d732fb26c23931a2565208eba16b52f6",
+				"dweb:/ipfs/QmS1hrWxJ8fj7caZ3aV6QRHZi9wC5DRTw62qWCvjrujVtn"
 			]
 		}
 	},

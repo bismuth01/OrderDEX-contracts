@@ -35,8 +35,4 @@ contract Wallet {
     function checkBalance() external view returns (uint256) {
         return balance;
     }
-
-    receive() external payable {
-        balance += msg.value;
-    }
 }

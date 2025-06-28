@@ -11,21 +11,6 @@
 						"internalType": "address",
 						"name": "_router",
 						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "_entrypoint",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "_userInteraction",
-						"type": "address"
-					},
-					{
-						"internalType": "uint64",
-						"name": "_entrypointselector",
-						"type": "uint64"
 					}
 				],
 				"stateMutability": "nonpayable",
@@ -127,26 +112,19 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "entrypointAddress",
-				"outputs": [
+				"inputs": [
 					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
+						"internalType": "string",
+						"name": "ownerId",
+						"type": "string"
 					}
 				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "entrypointChainSelector",
+				"name": "getBalance",
 				"outputs": [
 					{
-						"internalType": "uint64",
-						"name": "",
-						"type": "uint64"
+						"internalType": "uint256",
+						"name": "contractBalance",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -159,6 +137,25 @@
 					{
 						"internalType": "address",
 						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "ownerId",
+						"type": "string"
+					}
+				],
+				"name": "getWalletAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "wallet",
 						"type": "address"
 					}
 				],
@@ -331,19 +328,19 @@
 			]
 		},
 		"contracts/Wallet.sol": {
-			"keccak256": "0x39815560ccc7395646d23ebd130b79464ee84d541cc916bb741165b990174b61",
+			"keccak256": "0x0b45ef819eec32fd491f3833a4987f32461c49d536ff273aa3d5f8c9258cbccb",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://682c8849c71e7cc049708344d0c37417e397946356bcd3791582eebd687a359f",
-				"dweb:/ipfs/QmbCzTKC9rWa4ttgrEpVhJVeBTinqQXX3XwLgRrLMUAc72"
+				"bzz-raw://e148c0d042a2565be2ef3ffac27abaa4999a4dab30c231f83719fa72c4014222",
+				"dweb:/ipfs/QmbLikVYtCzEVC1FHTyoo1u6dxXUWdMWsm8rWvLXEoGwQv"
 			]
 		},
 		"contracts/WalletController.sol": {
-			"keccak256": "0xef054c746d2d64defbb2342895ee149e6957cc05e39769830310ddc3ef38c3e1",
+			"keccak256": "0x7a5ff39f36ca5e242db2c11c5867c0c3f88d732abfc45c3876e1b009984a6868",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://f31a643a8aefc4ac986685936c86247db54aeb94eccad4e05ab13ba2a7061f0e",
-				"dweb:/ipfs/QmYyG3xyHwAs7qjqCRKzktp8zkTVtf2TudL2CtRfTTdP3k"
+				"bzz-raw://1e423af2c8d60b3e8faf9022a03bb1c0d732fb26c23931a2565208eba16b52f6",
+				"dweb:/ipfs/QmS1hrWxJ8fj7caZ3aV6QRHZi9wC5DRTw62qWCvjrujVtn"
 			]
 		}
 	},

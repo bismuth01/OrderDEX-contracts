@@ -17,6 +17,22 @@
 				"type": "constructor"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "currentBalance",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "calculatedFees",
+						"type": "uint256"
+					}
+				],
+				"name": "NotEnoughBalance",
+				"type": "error"
+			},
+			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -174,6 +190,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "routerAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "string",
@@ -242,6 +271,10 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -320,11 +353,11 @@
 			]
 		},
 		"contracts/EntryPoint.sol": {
-			"keccak256": "0x4fcf8ff712977bae14bd6dfa3761c9e40ebcbd72e2e5f82e8597927aa6a1d2ef",
+			"keccak256": "0x078217fec21d27a6a527d07873d9f247398a564d51f72cad2ab113857e28fe18",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://2eb2726da3489303d0a0ea6fb8194d7eee98e8a59d62b4ab19c6c245fd6cee1e",
-				"dweb:/ipfs/QmQbvKNzBgdpErWGr4Wqv3oDfJFetquVb2VPwj9TfMTo6B"
+				"bzz-raw://2de90d1f49e8380c7c4162a5519a1bbc063ba330a4463a55ef090f3d86c883bb",
+				"dweb:/ipfs/QmVbwkXewbMczoyiAi9ZtKC6U9SmwCQoT1gGg5MqJpFAPY"
 			]
 		}
 	},

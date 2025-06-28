@@ -21,11 +21,16 @@ contract UserInteraction {
         walletController = newController;
     }
 
+    function getBalance(string calldata ownerId) external view returns (uint256 contractBalance) {
+        WalletController controller = WalletController(walletController);
+        contractBalance = controller.getBalance(ownerId);
+    }
+
     function deposit(string calldata ownerId) external payable {
         WalletController(payable(walletController)).depositTo{value: msg.value}(ownerId);
     }
 
-    function withdraw(string calldata ownerId, uint256 amount) external {
-        WalletController(payable(walletController)).withdrawTo(ownerId, msg.sender, amount);
+    function withdraw(string calldata ownerId, address withdrawAddress, uint256 amount) external {
+        WalletController(payable(walletController)).withdrawTo(ownerId, withdrawAddress, amount);
     }
 }

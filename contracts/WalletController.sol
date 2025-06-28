@@ -14,33 +14,22 @@ contract WalletController is CCIPReceiver {
 
     mapping(string => address) public walletOwnership;
 
-    address public entrypointAddress;
     address public userInteractionAddress;
-    uint64 public entrypointChainSelector;
 
     event WalletCreated(string ownerId, address wallet);
 
-    modifier onlyAuthorized() {
-        require(
-            msg.sender == entrypointAddress || msg.sender == userInteractionAddress,
-            "Unauthorized sender"
-        );
-        _;
-    }
-
     constructor(
-        address _router,
-        address _entrypoint,
-        address _userInteraction,
-        uint64 _entrypointselector
+        address _router
     )
         CCIPReceiver(_router)
-    {
-        require(_entrypoint != address(0), "Invalid entrypoint");
-        require(_userInteraction != address(0), "Invalid userInteraction");
-        entrypointAddress = _entrypoint;
-        userInteractionAddress = _userInteraction;
-        entrypointChainSelector = _entrypointselector;
+    {}
+
+    function getWalletAddress(string calldata ownerId) external view returns (address wallet){
+        wallet = walletOwnership[ownerId];
+    }
+
+    function getBalance(string calldata ownerId) external view returns (uint256 contractBalance) {
+        contractBalance = address(walletOwnership[ownerId]).balance;
     }
 
     function _getOrCreateWallet(string memory ownerId) internal returns (address wallet) {
@@ -52,20 +41,20 @@ contract WalletController is CCIPReceiver {
         }
     }
 
-    function depositTo(string calldata ownerId) external payable onlyAuthorized {
+    function depositTo(string calldata ownerId) external payable {
         address wallet = _getOrCreateWallet(ownerId);
         (bool success, ) = wallet.call{value: msg.value}(abi.encodeWithSignature("deposit()"));
         require(success, "Deposit failed");
     }
 
-    function withdrawTo(string calldata ownerId, address to, uint256 amount) external onlyAuthorized {
+    function withdrawTo(string calldata ownerId, address to, uint256 amount) external {
         address wallet = walletOwnership[ownerId];
         require(wallet != address(0), "Wallet not found");
 
         Wallet(payable(wallet)).withdraw(to, amount);
     }
 
-    function transferTo(string memory sourceOwnerId, string memory destinationOwnerId, uint256 amount) internal onlyAuthorized{
+    function transferTo(string memory sourceOwnerId, string memory destinationOwnerId, uint256 amount) internal {
         address sourceAddress = _getOrCreateWallet(sourceOwnerId);
         address destinationAddress = _getOrCreateWallet(destinationOwnerId);
 
