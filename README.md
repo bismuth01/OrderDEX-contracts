@@ -12,6 +12,7 @@ The WalletController contract takes care of the token swapping.
 To deposit or withdraw their tokens, users can use the UserInteraction contract.
 
 ## Architecture
+![Screenshot_20250629_132641](https://github.com/user-attachments/assets/033e0969-5059-4b0d-9016-8a9e67236df6)
 
 
 ## How to setup the contracts
