@@ -1,28 +1,24 @@
-REMIX DEFAULT WORKSPACE
+# On-chain order book contracts
+This repository contains the contracts to create an _almost on-chain_ order book trading platform using Chainlink CCIP.
 
-Remix default workspace is present when:
-i. Remix loads for the very first time 
-ii. A new workspace is created with 'Default' template
-iii. There are no files existing in the File Explorer
+## High level overview
+Trades are submitted to an off-chain server, where orders are matched. If orders are cancelled, they are removed from the server causing no loss in fees.
+Every user is identified with a unique string ID. This ID is used on all chains required for creating a smart contract wallet.
+Once orders are matched, every block time, they are batched and sent on-chain to the EntryPoint.
 
-This workspace contains 3 directories:
+The EntryPoint checks the matched orders, calculates the tokens to be transfered and the spread profit gained, then sends out messages using Chainlink CCIP to the required chain's WalletController.
+The WalletController contract takes care of the token swapping.
 
-1. 'contracts': Holds three contracts with increasing levels of complexity.
-2. 'scripts': Contains four typescript files to deploy a contract. It is explained below.
-3. 'tests': Contains one Solidity test file for 'Ballot' contract & one JS test file for 'Storage' contract.
+To deposit or withdraw their tokens, users can use the UserInteraction contract.
 
-SCRIPTS
+## Architecture
 
-The 'scripts' folder has four typescript files which help to deploy the 'Storage' contract using 'web3.js' and 'ethers.js' libraries.
 
-For the deployment of any other contract, just update the contract name from 'Storage' to the desired contract and provide constructor arguments accordingly 
-in the file `deploy_with_ethers.ts` or  `deploy_with_web3.ts`
-
-In the 'tests' folder there is a script containing Mocha-Chai unit tests for 'Storage' contract.
-
-To run a script, right click on file name in the file explorer and click 'Run'. Remember, Solidity file must already be compiled.
-Output from script will appear in remix terminal.
-
-Please note, require/import is supported in a limited manner for Remix supported modules.
-For now, modules supported by Remix are ethers, web3, swarmgw, chai, multihashes, remix and hardhat only for hardhat.ethers object/plugin.
-For unsupported modules, an error like this will be thrown: '<module_name> module require is not supported by Remix IDE' will be shown.
+## How to setup the contracts
+1. Choose all the chains you want to deploy. Use CCIP directory to find the router and chain selector.
+EntryPoint is meant to be on a single chain. While UserInteraction & WalletController are to be deployed in each chain.
+2. In every chain, deploy UserInteraction first, take that address and deploy WalletController with it, then send it native fees for CCIP Transactions.
+Make sure to record them somewhere as changing chains in metamask will cause losing that data in Remix IDE.
+3. Now, deploy your EntryPoint at your choice of chain. Use `setProfitWalletId` to set an user id to whom the spread profit will be transferred.
+Use the `setRoute` function, where t is token route name, sel is chain selector, ctl is wallet controller addresss for that chain and denom is denom of the token.
+4. All set !! To start trading, use the UserInteraction contract of the token you want to use, to deposit it in your wallet.
